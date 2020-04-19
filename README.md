@@ -5,6 +5,9 @@ Author: Andrew E. Davidson
 aedavids@ucsc.edu
 [https://github.com/aedavids/findBiomarkers](https://github.com/aedavids/findBiomarkers)
 
+## Starting notebooks
+use bin/startNotesbooks.sh  
+
 ## Installation
 
 set up conda env with required packages
@@ -30,14 +33,6 @@ $ conda activate findBiomarkes
   * you can find a copy at s3://bme-230a.santacruzintegration.com/tcga_target_gtex.h5
   * or run [Rob Curries' ingest notebook](https://github.com/rcurrie/tumornormal/blob/master/ingest.ipynb)
 
-## Starting notebooks
-
-```
-cd ~workSpace/UCSC/findBiomarkers
-conda activate findBiomarkers
-export PYTHONPATH="${PYTHONPATH}:`pwd`/src"
-jupyter notebook
-```
 ## Running Unit test
 ```
 cd ~workSpace/UCSC/findBiomarkers
