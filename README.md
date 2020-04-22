@@ -6,7 +6,7 @@ aedavids@ucsc.edu
 [https://github.com/aedavids/findBiomarkers](https://github.com/aedavids/findBiomarkers)
 
 ## Starting notebooks
-use bin/startNotesbooks.sh  
+bin/startNotesbooks.sh  
 
 ## Installation
 
@@ -42,13 +42,35 @@ cd src/test
 python -m unittest discover .
 ```
 ## Table of Contents
+
+- [./documentation/dataDictionary](./documentation/dataDictionary)
+
 Jupyter notebooks
 
 - [lungCancerClassifierExploration.ipynb](./jupyterNotebooks/lungCancerClassifierExploration.ipynb)
-    * AEDWIP laslsls
+    * basic exploration to get an idea of how to train a classifier
+    
+- [cancerExploration.ipynb](./jupyterNotebooks/cancerExploration.ipynb)
+    * checks to see if data set is balanced. Use to suggest data sub sets to 
+    train with
 
 - [lungCancerClassifier.ipynb](./jupyterNotebooks/lungCancerClassifier.ipynb)
-    * AEDWIP trains a model
+    * binary classifier    
     
-- [lungCancerClassifierExploration.ipynb](./jupyterNotebooks/lungCancerClassifierExploration.ipynb)
-    * evaluates model
+- [lungCancerClassifierEvaluation.ipynb](./jupyterNotebooks/lungCancerClassifierEvaluation.ipynb)
+    * How well does model work
+    
+- [TCGA_Target_GTexPrototype.ipynb](./jupyterNotebooks/TCGA_Target_GTexPrototype.ipynb)
+    * used to develop dataUtilities/TCGA_Target_GTex.py
+    
+- [testTCGA_Target_GTex.ipynb](./jupyterNotebooks/testTCGA_Target_GTex.ipynb)
+    * test  dataUtilities/TCGA_Target_GTex.py
+    
+
+Depecated Tree house notebooks
+The use a data set the compins the TCGA-target-GTex data sets with tree house childhood cancer
+
+lungCancerClassifierExploration-TreeHouse.ipynb
+lungCancerClassifier-TreeHouse.ipynb
+lungCancerClassifierEvaluation-Treehouse.ipynb
+

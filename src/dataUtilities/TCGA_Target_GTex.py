@@ -7,34 +7,13 @@ Created on Apr 12, 2020
 aedavids@ucsc.edu
 '''
 
-# Do not use the tree house version https://github.com/rcurrie/tumornormal/blob/master/ingest.ipynb
-# 
-# The only file you need to run other notesbooks is ../data/tcga_target_gtex.h5
-# 
-# you can delete the following files to save a little disk space
-# 
-# ```
-# cd data
-# rm TcgaTargetGTEX_phenotype.txt.gz
-# rm TcgaTargetGtex_rsem_gene_tpm.gz 
-# rm TcgaTargetGtex_rsem_gene_tpm.h5
-# ```
-# 
-# remove sample if category or target is missing
-# 
-# you might want drop additional gene expression features if there are a large number of log2(0.001) values. It means the original data had zero TPM
 
-# In[1]:
-
-# import h5py
-from IPython.display import display, HTML
+#from IPython.display import display, HTML
 import logging
 import numpy as np
 import pandas as pd
 import pathlib as pl
-#import os
 import requests
-#import sys
 
 ########################################################################
 class TCGA_Target_GTex :
@@ -305,7 +284,7 @@ class TCGA_Target_GTex :
                            index=['m', 'n', 'o', 'p', 'q', 'r' ]
                           )
         #self.logger.info(testExpDF)
-        display(HTML(testExpDF.to_html()))
+        #display(HTML(testExpDF.to_html()))
     
     
         # testPheDF = pd.DataFrame(aedwp,
@@ -320,13 +299,13 @@ class TCGA_Target_GTex :
     
         testPheDF.iloc[[1,3], 0] = np.NaN
         testPheDF.iloc[[2], 1] = np.NaN
-        display(HTML(testPheDF.to_html()))
+        #display(HTML(testPheDF.to_html()))
     
         self.logger.info('\n\n\n\n ********** BEGIN test ******')
         t = self.dropRowsIfMissingMetadata(testExpDF, testPheDF)
         cleanGeneExprDF, cleanPhenoDF, nullRowIdx = t
-        display(HTML(cleanGeneExprDF.to_html()))
-        display(HTML(cleanPhenoDF.to_html()))
+        #display(HTML(cleanGeneExprDF.to_html()))
+        #display(HTML(cleanPhenoDF.to_html()))
         self.logger.info('nullRowIdx:{}'.format(nullRowIdx))
     
     ########################################################################

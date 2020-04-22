@@ -23,7 +23,7 @@ class Histogram():
     reference: lecture 4
     '''
     ########################################################################
-    def __init__(self, panel, x, numBins, scale=None):
+    def __init__(self, panel, x, numBins, RGBTuple=None, alpha=0.5, label=None, scale=None):
         '''
         plots a histogram
         
@@ -35,6 +35,14 @@ class Histogram():
             
             numBins: 
                 number of equally spaced bins between min(x) and max(x)
+                
+            RGBTuple: color tuple
+                example: (205, 123, 1)
+                
+            alpha
+                a value between 0 and 1
+                
+            label:
             
             scale:
                 boolean
@@ -43,6 +51,9 @@ class Histogram():
         self.panel = panel
         self.x = x 
         self.numBins = numBins
+        self.color = list( (i/255.0 for i in RGBTuple) ) # comprehensions return generators
+        self.alpha = alpha
+        self.label = label
         self.scale = scale
         
         self.xMin = np.min(self.x)
@@ -81,13 +92,15 @@ class Histogram():
 
         # print("\nxHisto:\n{}".format(self.xHisto))
         # print("\nretBins:\n{}".format(self.retBins))
- 
         for i in range(0, len(self.binCounts), 1) :
             left, bottom, width, height = self._dimensions(i)
             rectangle=mplpatches.Rectangle( [left,bottom], width, height,
-                                       facecolor=(128/255.0, 128/255.0, 128/255.0),
+                                       facecolor=self.color,
                                        edgecolor='black',
-                                       linewidth=0.1)
+                                       linewidth=0.1
+                                       ,alpha=self.alpha
+                                       ,label = self.label
+                                       )
             self.panel.add_patch(rectangle)            
             
     ########################################################################
@@ -107,7 +120,7 @@ class HistogramLeft(Histogram):
     
 
     '''
-    def __init__(self, panel, x, numBins, scale=None):
+    def __init__(self, panel, x, numBins, RGBTuple=None, alpha=0.5, label=None, scale=None):
         '''
         arguments:
             panel
@@ -118,11 +131,19 @@ class HistogramLeft(Histogram):
             numBins: 
                 number of equally spaced bins between min(x) and max(x)
             
+            RGBTuple: color tuple
+                example: (205, 123, 1)
+                
+            alpha
+                a value between 0 and 1
+                
+            label
+                            
             scale:
                 boolean
                 if true bin counts are convert as follows np.log2(binCounts = 1)
         '''        
-        super(HistogramLeft, self).__init__(panel, x, numBins, scale)
+        super(HistogramLeft, self).__init__(panel, x, numBins, RGBTuple, alpha, label, scale)
 
     ########################################################################
     def _dimensions(self, i):
@@ -145,7 +166,7 @@ class HistogramRight(Histogram):
     - x axis from left to right goes from 0 to positive number 
     - y axis goes from top to bottom 0, positive number     
     '''
-    def __init__(self, panel, x, numBins, scale=None):
+    def __init__(self, panel, x, numBins, RGBTuple=None, alpha=0.5, label=None, scale=None):
         '''
         arguments:
             panel
@@ -156,11 +177,19 @@ class HistogramRight(Histogram):
             numBins: 
                 number of equally spaced bins between min(x) and max(x)
             
+            RGBTuple: color tuple
+                example: (205, 123, 1)
+                
+            alpha
+                a value between 0 and 1
+                
+            label
+                            
             scale:
                 boolean
                 if true bin counts are convert as follows np.log2(binCounts = 1)
         '''                
-        super(HistogramRight, self).__init__(panel, x, numBins, scale)
+        super(HistogramRight, self).__init__(panel, x, numBins, RGBTuple. alpha, label, scale)
 
     ########################################################################
     def _dimensions(self, i):

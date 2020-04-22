@@ -11,5 +11,5 @@ cd ${rootDir}
 source ~/anaconda3/etc/profile.d/conda.sh
 conda activate findBiomarkers 
 export PYTHONPATH="${PYTHONPATH}:`pwd`/src"
-cd jupyterNotebooks
+#cd jupyterNotebooks
 jupyter notebook
